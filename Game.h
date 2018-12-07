@@ -12,6 +12,8 @@ namespace Game
 
 	void initialize();
 	void loop();
+
+	bool checkCollision(GameObject *object1, int x1, int y1, GameObject *object2, int x2, int y2);
 }
 
 #endif //_GAME_H

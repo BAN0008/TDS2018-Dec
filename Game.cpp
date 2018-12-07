@@ -23,11 +23,17 @@ void Game::loop()
 		}
 
 		window.clear();
-		for (unsigned i = 0; i < objects.size(); i++)
+		for (unsigned int i = 0; i < objects.size(); i++)
 		{
 			objects[i]->update();
 			objects[i]->draw(&window);
 		}
 		window.display();
 	}
+}
+
+bool checkCollision(GameObject *object1, int x1, int y1, GameObject *object2, int x2, int y2) //Remove this function and make a CollisionMask Class with overloadable methods
+{
+
+	return false;
 }
