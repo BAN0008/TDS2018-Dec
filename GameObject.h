@@ -11,6 +11,9 @@
 class GameObject
 {
 public:
+	double x, y;
+	int w, h;
+
 	int collisionType = NONE;
 	virtual void update();
 	virtual void draw(sf::RenderTarget *target);

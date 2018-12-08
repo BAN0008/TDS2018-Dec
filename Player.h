@@ -10,8 +10,7 @@ public:
 
 	void update();
 	void draw(sf::RenderTarget *target);
-private:
-	int x, y, hsp, vsp;
+	int hsp, vsp;
 };
 
 #endif //_PLAYER_H
