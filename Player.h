@@ -6,6 +6,8 @@
 class Player : public GameObject
 {
 public:
+	Player(int x, int y);
+
 	void update();
 	void draw(sf::RenderTarget *target);
 private:

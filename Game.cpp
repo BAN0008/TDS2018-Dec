@@ -32,8 +32,11 @@ void Game::loop()
 	}
 }
 
-bool checkCollision(GameObject *object1, int x1, int y1, GameObject *object2, int x2, int y2) //Remove this function and make a CollisionMask Class with overloadable methods
+bool checkCollision(GameObject *object1, int x1, int y1, GameObject *object2, int x2, int y2)
 {
-
+	if (object1->collisionType == RECTANGLE && object2->collisionType == RECTANGLE)
+	{
+		
+	}
 	return false;
 }

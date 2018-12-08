@@ -16,6 +16,13 @@ short sgn(int a)
 	return 0;
 }
 
+Player::Player(int start_x, int start_y)
+{
+	x = start_x;
+	y = start_y;
+	collisionType = CIRCLE;
+}
+
 void Player::update()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) hsp = 10;
