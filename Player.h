@@ -1,6 +1,8 @@
 #ifndef _PLAYER_H
 #define _PLAYER_H
 
+#define PLAYER 0
+
 #include "GameObject.h"
 
 class Player : public GameObject

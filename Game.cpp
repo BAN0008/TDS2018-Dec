@@ -125,3 +125,23 @@ bool Game::checkCollision(GameObject *object1, int x1, int y1, GameObject *objec
 	}
 	return false;
 }
+
+std::vector<GameObject *> Game::checkCollisions(GameObject *object, int x, int y, std::initializer_list<unsigned int> class_ids)
+{
+	std::vector<GameObject *> collided_objects;
+	for (unsigned int i = 0; i < objects.size(); i++)
+	{
+		for (unsigned int j = 0; j < class_ids.size(); j++)
+		{
+			if (objects[i]->class_id == *(class_ids.begin() + j))
+			{
+				if (checkCollision(object, x, y, objects[i], objects[i]->x, objects[i]->y))
+				{
+					collided_objects.push_back(objects[i]);
+				}
+				break;
+			}
+		}
+	}
+	return collided_objects;
+}

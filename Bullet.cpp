@@ -10,13 +10,14 @@ Bullet::Bullet(int start_x, int start_y, double start_hsp, double start_vsp)
 	hsp = start_hsp;
 	vsp = start_vsp;
 	collisionType = CIRCLE;
+	class_id = BULLET;
 	//collisionType = RECTANGLE;
 }
 
 void Bullet::update()
 {
-	x += hsp * 6;
-	y += vsp * 6;
+	x += hsp * 12;
+	y += vsp * 12;
 }
 
 void Bullet::draw(sf::RenderTarget *target)
@@ -24,7 +25,7 @@ void Bullet::draw(sf::RenderTarget *target)
 	sf::Vertex line[] =
 	{
 	    sf::Vertex(sf::Vector2f(x, y)),
-	    sf::Vertex(sf::Vector2f(x + hsp * 12, y + vsp * 12))
+	    sf::Vertex(sf::Vector2f(x + hsp * 24, y + vsp * 24))
 	};
 
 	target->draw(line, 2, sf::Lines);

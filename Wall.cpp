@@ -9,7 +9,7 @@ Wall::Wall(int start_x, int start_y)
 	w = 32;
 	h = 32;
 	collisionType = RECTANGLE;
-	//collisionType = CIRCLE;
+	class_id = WALL;
 }
 
 void Wall::draw(sf::RenderTarget *target)

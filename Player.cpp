@@ -4,6 +4,7 @@
 #include <math.h>
 #include "Game.h"
 #include "Bullet.h"
+#include "Wall.h"
 
 short sgn(int a)
 {
@@ -27,7 +28,7 @@ Player::Player(int start_x, int start_y)
 	hsp = 0;
 	vsp = 0;
 	collisionType = CIRCLE;
-	//collisionType = RECTANGLE;
+	class_id = PLAYER;
 }
 
 void Player::update()
@@ -51,26 +52,31 @@ void Player::update()
 
 	for (unsigned int i = 0; i < abs(hsp); i++)
 	{
-		if (true)
+		if (Game::checkCollisions(this, x, y, {WALL}).size() == 0)
 		{
 			x += sgn(hsp);
+		}
+		else
+		{
+			hsp = 0;
+			break;
 		}
 	}
 	for (unsigned int i = 0; i < abs(vsp); i++)
 	{
-		if (true)
+		if (Game::checkCollisions(this, x, y, {WALL}).size() == 0)
 		{
 			y += sgn(vsp);
+		}
+		else
+		{
+			vsp = 0;
+			break;
 		}
 	}
 
 	if (abs(hsp) > 0) hsp += -1 * sgn(hsp);
 	if (abs(vsp) > 0) vsp += -1 * sgn(vsp);
-	if (Game::checkCollision(Game::objects[0], Game::objects[0]->x, Game::objects[0]->y, Game::objects[1], Game::objects[1]->x, Game::objects[1]->y))
-	{
-		hsp = 15;
-		vsp = 15;
-	}
 }
 
 void Player::draw(sf::RenderTarget *target)

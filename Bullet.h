@@ -1,6 +1,8 @@
 #ifndef _BULLET_H
 #define _BULLET_H
 
+#define BULLET 2
+
 #include "GameObject.h"
 
 class Bullet : public GameObject

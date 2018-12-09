@@ -13,8 +13,8 @@ class GameObject
 public:
 	double x, y;
 	int w, h;
-
 	int collisionType = NONE;
+	unsigned int class_id;
 	virtual void update();
 	virtual void draw(sf::RenderTarget *target);
 };
