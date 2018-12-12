@@ -16,6 +16,7 @@ Bullet::Bullet(int start_x, int start_y, double start_hsp, double start_vsp)
 
 void Bullet::update()
 {
+	
 	x += hsp * 12;
 	y += vsp * 12;
 }
