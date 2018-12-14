@@ -35,14 +35,14 @@ void Player::update()
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 	{
-		double vx = sf::Mouse::getPosition().x - x + (w / 2);
-		double vy = sf::Mouse::getPosition().y - y + (w / 2);
-		float length = sqrt((vx * vx) + (vy * vy));
+		double vx = sf::Mouse::getPosition().x - (x + (w / 2));
+		double vy = sf::Mouse::getPosition().y - (y + (h / 2));
+		double length = sqrt((vx * vx) + (vy * vy));
 
 		vx /= length;
 		vy /= length;
 
-		Game::objects.push_back(new Bullet(x + (w / 2), y + (w / 2), vx, vy));
+		Game::objects.push_back(new Bullet(x + (w / 2), y + (h / 2), vx, vy));
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) hsp += 2;
