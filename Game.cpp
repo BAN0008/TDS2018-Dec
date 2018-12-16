@@ -17,7 +17,7 @@ void Game::loop()
 {
 	while (window.isOpen())
 	{
-		//Respond to winow events
+		//Respond to window events
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
