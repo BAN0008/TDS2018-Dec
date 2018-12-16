@@ -17,12 +17,14 @@ void Game::loop()
 {
 	while (window.isOpen())
 	{
+		//Respond to winow events
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed) window.close();
 		}
 
+		//Update objects and screen
 		window.clear();
 		for (unsigned int i = 0; i < objects.size(); i++)
 		{
@@ -30,6 +32,12 @@ void Game::loop()
 			objects[i]->draw(&window);
 		}
 		window.display();
+
+		//Add object data to network buffer
+		for (unsigned int i = 0; i < objects.size(); i++)
+		{
+			objects[i]->network();
+		}
 	}
 }
 
