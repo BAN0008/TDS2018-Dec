@@ -7,6 +7,7 @@
 #define CIRCLE 3
 
 #include <SFML/Graphics/RenderTarget.hpp>
+#include <SFML/Network/Packet.hpp>
 
 class GameObject
 {
@@ -17,6 +18,7 @@ public:
 	unsigned int class_id;
 	virtual void update();
 	virtual void draw(sf::RenderTarget *target);
+	virtual void updateServer(sf::Packet *buffer);
 };
 
 #endif //_GAMEOBJECT_H

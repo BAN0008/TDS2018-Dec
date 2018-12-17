@@ -12,7 +12,8 @@ public:
 
 	void update();
 	void draw(sf::RenderTarget *target);
-	int hsp, vsp;
+	void updateServer(sf::Packet *buffer);
+	float hsp, vsp;
 };
 
 #endif //_PLAYER_H

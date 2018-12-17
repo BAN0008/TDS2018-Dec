@@ -85,3 +85,11 @@ void Player::draw(sf::RenderTarget *target)
 	circle.setPosition(x, y);
 	target->draw(circle);
 }
+
+void Player::updateServer(sf::Packet *buffer)
+{
+	buffer->operator<<(x);
+	buffer->operator<<(y);
+	buffer->operator<<(hsp);
+	buffer->operator<<(vsp);
+}

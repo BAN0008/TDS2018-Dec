@@ -34,9 +34,10 @@ void Game::loop()
 		window.display();
 
 		//Add object data to network buffer
+		sf::Packet buffer;
 		for (unsigned int i = 0; i < objects.size(); i++)
 		{
-			objects[i]->network();
+			objects[i]->updateServer(&buffer);
 		}
 	}
 }
