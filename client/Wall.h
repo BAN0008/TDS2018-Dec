@@ -10,6 +10,8 @@ class Wall : public GameObject
 public:
 	Wall(int x, int y);
 	void draw(sf::RenderTarget *target);
+
+	void bulletHit(GameObject *bullet, float x, float y);
 };
 
 #endif //_WALL_H

@@ -21,4 +21,6 @@ public:
 	virtual void updateServer(sf::Packet *buffer);
 };
 
+float sgn(float a);
+
 #endif //_GAMEOBJECT_H

@@ -18,3 +18,8 @@ void Wall::draw(sf::RenderTarget *target)
 	rect.setPosition(x, y);
 	target->draw(rect);
 }
+
+void Wall::bulletHit(GameObject *bullet, float x, float y)
+{
+
+}

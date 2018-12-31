@@ -5,19 +5,7 @@
 #include "Game.h"
 #include "Bullet.h"
 #include "Wall.h"
-
-short sgn(int a)
-{
-	if (a > 0)
-	{
-		return 1;
-	}
-	if (a < 0)
-	{
-		return -1;
-	}
-	return 0;
-}
+#include "SFML/Audio.hpp"
 
 Player::Player(int start_x, int start_y)
 {
@@ -50,7 +38,7 @@ void Player::update()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) vsp += 2;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) vsp += -2;
 
-	for (unsigned int i = 0; i < abs(hsp); i++)
+	for (unsigned int i = 0; i < fabs(hsp); i++)
 	{
 		if (Game::checkCollisions(this, x + sgn(hsp), y, {WALL}).size() == 0)
 		{
@@ -62,7 +50,7 @@ void Player::update()
 			break;
 		}
 	}
-	for (unsigned int i = 0; i < abs(vsp); i++)
+	for (unsigned int i = 0; i < fabs(vsp); i++)
 	{
 		if (Game::checkCollisions(this, x, y + sgn(vsp), {WALL}).size() == 0)
 		{

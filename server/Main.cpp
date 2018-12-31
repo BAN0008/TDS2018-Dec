@@ -1,9 +1,11 @@
 #include <SFML/Network.hpp>
+#include <unordered_map>
+#include <string>
 #include <iostream>
 
 #define PORT 3366
-#define SYNC 0
-#define PING 1
+
+enum Commands {JOIN_REQUEST, JOIN_DENIED, JOIN_ACCEPTED};
 
 int main(int argc, char *argv[])
 {
@@ -11,46 +13,25 @@ int main(int argc, char *argv[])
 	socket.setBlocking(true);
 	socket.bind(PORT);
 
-	sf::Packet ping;
-	ping << (uint8_t)PING;
-
 	sf::Packet buffer;
-	sf::IpAddress remoteIP;
-	sf::IpAddress newRemoteIP;
-	unsigned short remotePort;
-	sf::Socket::Status status;
-
-	sf::Clock clock;
-	//std::cout << clock.getElapsedTime().asMicroseconds() << std::endl;
-	//std::cout << clock.getElapsedTime().asMilliseconds() << std::endl;
-
+	sf::IpAddress client_ip;
+	uint16_t client_port;
 	uint8_t command;
+
+	sf::Packet outgoing_packet;
 
 	while (true)
 	{
-		status = socket.receive(buffer, remoteIP, remotePort);
-		if (status == sf::Socket::Status::Done)
+		outgoing_packet.clear();
+		buffer.clear();
+		socket.receive(buffer, client_ip, client_port);
+		buffer >> command;
+		switch (command)
 		{
-			buffer >> command;
-			if (command == SYNC)
-			{
-				sf::Clock ping_clock;
-				socket.send(ping, remoteIP, PORT);
-				while (true)
-				{
-					status = socket.receive(buffer, newRemoteIP, remotePort);
-					if (status == sf::Socket::Status::Done && newRemoteIP.toInteger() == remoteIP.toInteger())
-					{
-						buffer >> command;
-						if (command == PING)
-						{
-							sf::Time latency = ping_clock.getElapsedTime();
-							std::cout << latency.asMilliseconds() << std::endl;
-							break;
-						}
-					}
-				}
-			}
+			case JOIN_REQUEST:
+				outgoing_packet << JOIN_ACCEPTED;
+				socket.send(outgoing_packet, client_ip, client_port);
+				break;
 		}
 	}
 	return 0;
