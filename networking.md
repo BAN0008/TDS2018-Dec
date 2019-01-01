@@ -1,9 +1,9 @@
 # Command Descriptions
 | Name | Fields     | Description |
 |------|------------|-------------|
-| **JOIN_REQUEST**  | version, password hash, name | Request to join server sent by client |
+| **JOIN_REQUEST**  | name, version, password hash | Request to join server sent by client |
 | **JOIN_DENIED**   | reason(INCORRECT_VERSION, BANNED, WRONG_PASSWORD, OTHER) | Reply to **JOIN_REQUEST** to inform the client that it cannot join |
-| **JOIN_ACCEPTED** | | Reply to **JOIN_REQUEST** |
+| **JOIN_ACCEPTED** | client_id | Reply to **JOIN_REQUEST** |
 
 
 # Connecting to server

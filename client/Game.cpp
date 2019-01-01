@@ -39,6 +39,15 @@ void Game::loop()
 		{
 			objects[i]->updateServer(&buffer);
 		}
+
+		//Delete Objects
+		for (unsigned int i = 0; i < Game::objects.size(); i++)
+		{
+			if (Game::objects[i]->delete_me)
+			{
+				delete Game::objects[i];
+			}
+		}
 	}
 }
 

@@ -31,6 +31,7 @@ void Player::update()
 		vy /= length;
 
 		Game::objects.push_back(new Bullet(x + (w / 2), y + (h / 2), vx, vy));
+		Game::objects[Game::objects.size() - 1]->index = Game::objects.size() - 1;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) hsp += 2;

@@ -12,13 +12,17 @@
 class GameObject
 {
 public:
+	bool delete_me = false;
 	double x, y;
 	int w, h;
 	int collisionType = NONE;
+	int index;
 	unsigned int class_id;
 	virtual void update();
 	virtual void draw(sf::RenderTarget *target);
 	virtual void updateServer(sf::Packet *buffer);
+
+	~GameObject();
 };
 
 float sgn(float a);
